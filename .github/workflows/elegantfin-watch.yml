@@ -1,0 +1,57 @@
+# ======================== SURVEILLANCE D'ELEGANTFIN ========================
+name: ElegantFin watch
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"  # chaque lundi à 06:17 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["Theme/**"]
+
+permissions:
+  contents: read
+  issues: write
+# =================================================
+
+
+# ======================== JOBS ========================
+jobs:
+  # --------------------- Vérifie que les variables d'ElegantFin existent toujours ---------------------
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vérifier les variables
+        id: check
+        run: bash scripts/check-elegantfin.sh
+
+      - name: Ouvrir une issue en cas d'incompatibilité
+        if: failure() && steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.check.outputs.version }}
+        run: |
+          title="ElegantFin a changé : variables introuvables ($VERSION)"
+          # Pas de doublon si une issue est déjà ouverte pour cette version
+          if gh issue list --state open --search "$title in:title" --json number --jq 'length' | grep -q '^0$'; then
+            {
+              echo "Le contrôle hebdomadaire a détecté des variables qu'ElegantSpider redéfinit mais qui n'existent plus dans **$VERSION** :"
+              echo
+              sed 's/^/- `/; s/$/`/' missing-variables.txt
+              echo
+              echo "Chercher leur nouveau nom dans le CSS d'ElegantFin et mettre à jour \`Theme/ElegantSpider-latest.css\`."
+            } > body.md
+            gh issue create --title "$title" --body-file body.md
+          fi
+
+  # --------------------- Vide le cache jsDelivr après une modification du thème ---------------------
+  purge:
+    if: github.event_name == 'push'
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purger jsDelivr
+        run: curl -fsS "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/Theme/ElegantSpider-latest.css"
+# =================================================

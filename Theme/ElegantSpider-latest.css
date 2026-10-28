@@ -1,0 +1,126 @@
+/* ======================== ELEGANTSPIDER ======================== */
+/* Thème rouge & bleu nuit pour ElegantFin (Jellyfin 12) - GPL-2.0 */
+/* À importer APRÈS ElegantFin et le compagnon jf12 */
+/* ================================================= */
+
+
+/* ======================== VARIABLES ======================== */
+:root {
+    /* --------------------- Palette --------------------- */
+    --es-red: hsl(354, 82%, 50%);
+    --es-red-rgb: 232 23 44; /* même rouge en canaux R G B, pour les transparences */
+    --es-red-hover: hsl(354, 90%, 60%);
+    --es-red-dark: hsl(354, 75%, 32%);
+    --es-blue: hsl(224, 76%, 48%);
+    --es-blue-dark: hsl(226, 60%, 14%);
+    --es-navy: #070b18;
+    --es-navy-2: #101a36;
+
+    /* --------------------- Fonds --------------------- */
+    --darkerGradientPoint: var(--es-navy);
+    --darkerGradientPointAlpha: rgba(7, 11, 24, 0.85);
+    --lighterGradientPoint: var(--es-navy-2);
+    --lighterGradientPointAlpha: rgba(16, 26, 54, 0.85);
+    --gradientPointAlpha: rgba(16, 26, 54, 0.3);
+    --headerColor: rgba(12, 18, 40, 0.8);
+    --drawerColor: rgba(12, 18, 40, 0.92);
+    --tableBodyColor: #111a33;
+    --headerColorGradient: linear-gradient(180deg, rgba(10, 15, 34, 0.95) 30%, 55%, transparent 90%);
+    --headerColorGradientAlt: linear-gradient(180deg, rgba(10, 15, 34, 1), 70%, transparent);
+
+    /* --------------------- Toile en filigrane et dégradé rouge/bleu --------------------- */
+    --es-web: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cpath d='M300 300L300 0M300 300L450 40M300 300L560 150M300 300L600 300M300 300L560 450M300 300L450 560M300 300L300 600M300 300L150 560M300 300L40 450M300 300L0 300M300 300L40 150M300 300L150 40M300 260Q309 267 320 265Q324 276 335 280Q333 291 340 300Q333 309 335 320Q324 324 320 335Q309 333 300 340Q291 333 280 335Q276 324 265 320Q267 309 260 300Q267 291 265 280Q276 276 280 265Q291 267 300 260M300 220Q318 234 340 231Q349 251 369 260Q366 282 380 300Q366 318 369 340Q349 349 340 369Q318 366 300 380Q282 366 260 369Q251 349 231 340Q234 318 220 300Q234 282 231 260Q251 251 260 231Q282 234 300 220M300 175Q328 196 362 192Q376 224 408 238Q404 272 425 300Q404 328 408 362Q376 376 362 408Q328 404 300 425Q272 404 238 408Q224 376 192 363Q196 328 175 300Q196 272 192 238Q224 224 237 192Q272 196 300 175M300 125Q339 155 388 148Q406 194 452 212Q445 261 475 300Q445 339 452 388Q406 406 388 452Q339 445 300 475Q261 445 213 452Q194 406 148 388Q155 339 125 300Q155 261 148 212Q194 194 212 148Q261 155 300 125M300 70Q351 109 415 101Q440 160 499 185Q491 249 530 300Q491 351 499 415Q440 440 415 499Q351 491 300 530Q249 491 185 499Q160 440 101 415Q109 351 70 300Q109 249 101 185Q160 160 185 101Q249 109 300 70M300 10Q365 59 445 49Q476 124 551 155Q541 235 590 300Q541 365 551 445Q476 476 445 551Q365 541 300 590Q235 541 155 551Q124 476 49 445Q59 365 10 300Q59 235 49 155Q124 124 155 49Q235 59 300 10' fill='none' stroke='white' stroke-opacity='.07' stroke-width='1.2'/%3E%3C/svg%3E");
+    --backgroundGradient:
+        var(--es-web) right -14rem top -14rem / 44rem no-repeat,
+        radial-gradient(ellipse at 100% 0%, rgb(var(--es-red-rgb) / 0.22), transparent 55%),
+        radial-gradient(ellipse at 0% 100%, hsla(224, 76%, 45%, 0.22), transparent 60%),
+        linear-gradient(0deg, var(--darkerGradientPoint) 35%, var(--lighterGradientPoint));
+    --cardBackgroundGradient: linear-gradient(0deg, var(--es-navy), 25%, var(--es-blue-dark));
+
+    /* --------------------- Bordures et sélecteurs --------------------- */
+    --borderColor: hsl(226, 30%, 26%);
+    --darkerBorderColor: hsl(226, 30%, 18%);
+    --lighterBorderColor: hsla(0, 0%, 100%, 0.16);
+    --selectorBackgroundColor: hsl(226, 35%, 20%);
+    --selectorBackgroundColorAlpha: hsla(226, 35%, 20%, 0.5);
+
+    /* --------------------- Texte --------------------- */
+    --textColor: rgb(226, 230, 240);
+    --dimTextColor: rgb(150, 160, 190);
+
+    /* --------------------- Accent --------------------- */
+    --accentColor: var(--es-red);
+    --accentHoverColor: var(--es-red-hover);
+    --semiTransparentAccentColor: rgb(var(--es-red-rgb) / 0.18);
+
+    /* --------------------- Boutons --------------------- */
+    --btnPlayColor: var(--es-red);
+    --btnPlayBorderColor: var(--es-red-hover);
+    --btnMiniPlayColor: var(--es-red);
+    --btnMiniPlayBorderColor: var(--es-red-hover);
+    --btnSubmitColor: var(--es-red-dark);
+    --btnSubmitBorderColor: var(--es-red);
+    --btnDeleteColor: hsl(0, 70%, 30%);
+    --btnDeleteBorderColor: hsl(0, 70%, 55%);
+    --checkboxCheckedBgColor: var(--es-red);
+    --highlightOutlineColor: var(--es-blue);
+
+    /* --------------------- Cartes et progression --------------------- */
+    --cardHoverBorderColor: var(--es-red);
+    --cardResumeProgressColor: var(--es-red);
+    --osdSeekBarPlayedColor: var(--es-red);
+    --osdSeekBarThumbColor: #fff;
+    --cardShadow: 0 2px 10px 0 hsla(226, 80%, 4%, 0.6);
+
+    /* --------------------- Texte sur fond rouge et survols --------------------- */
+    --zeroContrastColor: #fff;
+    --hoverBackgroundColor: var(--es-red);
+    --hoverTabBackgroundColor: var(--es-red);
+}
+/* ================================================= */
+
+
+/* ======================== JELLYFIN 12 (AFFICHAGE MODERNE) ======================== */
+/* --------------------- Couleurs écrites en dur par le compagnon jf12 --------------------- */
+:root,
+:root[data-theme]:not([data-theme="light"]) {
+    --jf-palette-background-defaultChannel: 7 11 24;
+    --jf-palette-background-paperChannel: 33 41 69;
+    --jf-palette-text-primaryChannel: 226 230 240;
+    --jf-palette-text-secondaryChannel: 150 160 190;
+    --jf-palette-primary-mainChannel: var(--es-red-rgb);
+    --jf-palette-secondary-mainChannel: var(--es-red-rgb);
+}
+/* ================================================= */
+
+
+/* ======================== EFFETS ======================== */
+/* --------------------- Lueur rouge au survol des cartes (desktop) --------------------- */
+@media (hover: hover) {
+    .card:hover .cardBox .cardScalable,
+    .card:focus .cardBox .cardScalable {
+        box-shadow: 0 0 0 2px var(--es-red), 0 6px 22px rgb(var(--es-red-rgb) / 0.35);
+    }
+}
+
+/* --------------------- Bande transparente sous l'image d'un film, comme prévu par ElegantFin --------------------- */
+.layout-desktop .detailRibbon,
+.layout-tv .detailRibbon {
+    background: transparent;
+}
+
+/* --------------------- Bouton « Passer l'intro » en rouge --------------------- */
+.skip-button {
+    background-color: var(--es-red);
+}
+
+/* --------------------- Barres de défilement assorties --------------------- */
+::-webkit-scrollbar-thumb {
+    background: var(--es-red-dark);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--es-red);
+}
+/* ================================================= */

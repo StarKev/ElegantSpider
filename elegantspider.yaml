@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/awesome-jellyfin/awesome-jellyfin/main/assets/themes/schema.json
+
+# ======================== FICHE ========================
+owners:
+  - StarKev
+name: ElegantSpider
+author: StarKev
+author_url: https://github.com/StarKev
+repo: https://github.com/StarKev/ElegantSpider
+description: A red and midnight-blue colour layer for ElegantFin, with a subtle web watermark.
+status: listed
+note: Built on ElegantFin. The Jellyfin 12 variants add the elegantfin-jf12 companion for the Modern layout; pick "+ Media Bar" if you use that plugin.
+screenshots:
+  - https://raw.githubusercontent.com/StarKev/ElegantSpider/main/assets/screenshots/home-desktop.webp
+  - https://raw.githubusercontent.com/StarKev/ElegantSpider/main/assets/screenshots/movies-desktop.webp
+  - https://raw.githubusercontent.com/StarKev/ElegantSpider/main/assets/screenshots/movie-desktop.webp
+  - https://raw.githubusercontent.com/StarKev/ElegantSpider/main/assets/screenshots/home-mobile.webp
+# =================================================
+
+
+# ======================== VARIANTES ========================
+variants:
+  # --------------------- Jellyfin 12, affichage Moderne ---------------------
+  - id: jf12
+    name: Jellyfin 12
+    css: |-
+      @import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+      @import url("https://cdn.jsdelivr.net/gh/mihaif7/elegantfin-jf12@main/Theme/ElegantFin-jf12-modern-latest.css");
+      @import url("https://cdn.jsdelivr.net/gh/StarKev/ElegantSpider@main/Theme/ElegantSpider-latest.css");
+  # --------------------- Jellyfin 12 avec le plugin Media Bar ---------------------
+  - id: jf12-media-bar
+    name: Jellyfin 12 + Media Bar
+    css: |-
+      @import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+      @import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/assets/add-ons/media-bar-plugin-support-latest-min.css");
+      @import url("https://cdn.jsdelivr.net/gh/mihaif7/elegantfin-jf12@main/Theme/ElegantFin-jf12-modern-latest.css");
+      @import url("https://cdn.jsdelivr.net/gh/StarKev/ElegantSpider@main/Theme/ElegantSpider-latest.css");
+  # --------------------- Jellyfin 10.11 ou affichage Legacy ---------------------
+  - id: legacy
+    name: Jellyfin 10.11 / Legacy layout
+    css: |-
+      @import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+      @import url("https://cdn.jsdelivr.net/gh/StarKev/ElegantSpider@main/Theme/ElegantSpider-latest.css");
+# =================================================
+
+
+# ======================== RÉGLAGES ========================
+groups:
+  - id: colours
+    label: Colours
+
+settings:
+  # --------------------- Couleur d'accent ---------------------
+  - id: accent
+    label: Accent
+    description: Buttons, active tabs and progress bars.
+    type: color
+    group: colours
+    default: "#e8172c"
+    css: |-
+      :root {
+        --es-red: {{ value }};
+        --es-red-rgb: {{ value | r }} {{ value | g }} {{ value | b }};
+        --es-red-hover: {{ value | mix "#ffffff" 0.2 }};
+        --es-red-dark: {{ value | shade -80 }};
+      }
+  # --------------------- Toile en filigrane ---------------------
+  - id: hide-web
+    label: Hide the web watermark
+    description: Removes the faint web in the top-right corner of the background.
+    type: toggle
+    group: colours
+    default: false
+    css: |-
+      :root {
+        --es-web: none;
+      }
+# =================================================
