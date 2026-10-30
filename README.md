@@ -8,7 +8,7 @@
 <br>
 </h1>
 
-[![Version](https://img.shields.io/badge/version-1.0.0-E5172B.svg)](https://github.com/StarKev/ElegantSpider/releases)
+[![Version](https://img.shields.io/badge/version-1.1.0-E5172B.svg)](https://github.com/StarKev/ElegantSpider/releases)
 [![Jellyfin](https://img.shields.io/badge/Jellyfin-12-00A4DC.svg)](https://jellyfin.org/)
 [![ElegantFin](https://img.shields.io/badge/ElegantFin-v26.09.05%2B-1F3A8A.svg)](https://github.com/lscambo13/ElegantFin)
 [![License](https://img.shields.io/badge/license-GPL--2.0-lightgrey.svg)](LICENSE)
@@ -34,7 +34,7 @@ It works with Jellyfin 12's **Modern** layout through the **[ElegantFin for Jell
 | # | Feature | Description |
 |---|---------|-------------|
 | 1 | Midnight background | Deep navy gradient with a red glow (top right) and a blue glow (bottom left) |
-| 2 | Web watermark | Subtle spider-web pattern in the top-right corner, drawn in pure SVG |
+| 2 | Web watermark | Subtle spider-web patterns in the top-right and bottom-left corners, drawn in pure SVG |
 | 3 | Red accent | Play buttons, checkboxes, active tabs, and highlights in vivid red |
 | 4 | Progress bars | Resume bars and player seek bar in red |
 | 5 | Card hover glow | Red outline and soft glow when hovering posters (desktop) |
@@ -84,7 +84,7 @@ Paste the same code into **Settings → Display → Custom CSS**.
 To lock a version that will never change, replace the last line with:
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/StarKev/ElegantSpider@v1.0.0/Theme/ElegantSpider-v1.0.0.css");
+@import url("https://cdn.jsdelivr.net/gh/StarKev/ElegantSpider@v1.0.0/Theme/ElegantSpider-latest.css");
 ```
 
 ### Option 4 — Without a URL import
@@ -117,15 +117,51 @@ Override any of these after the imports:
 
 All of ElegantFin's own options (app bar styles, card buttons, resume card size…) still work.
 
+## Comics add-on (optional)
+
+A second file gives Jellyfin the look of a comic book: **Bangers** titles and buttons, **Outfit** body font, red-bordered cards with a hard blue shadow, red-to-blue progress bars on the Continue Watching row, a red Play button and blue secondary buttons.
+
+Add this line **after** `ElegantSpider-latest.css`:
+
+```css
+@import url("https://cdn.jsdelivr.net/gh/StarKev/ElegantSpider@main/Theme/ElegantSpider-comics.css");
+```
+
+Fonts are served from `assets/fonts/` through relative paths, so nothing else to install. Both are SIL OFL 1.1 and include French accents.
+
+| Variable | Default | What it does |
+|----------|---------|--------------|
+| `--es-comic` | `"Bangers", "Impact", sans-serif` | Font for titles and buttons |
+| `--es-hard-shadow` | `3px 3px 0 var(--es-blue)` | Hard shadow on buttons |
+| `--es-hard-shadow-big` | `6px 6px 0 var(--es-blue)` | Hard shadow on hover |
+
 ## Preview
 
+### 🖼️ Theme Showcase
+
 Captured on a real Jellyfin 12.4 server (Modern layout) with ElegantFin, the jf12 companion and ElegantSpider.
+
+<details>
+<summary><b>Base theme</b></summary>
 
 | Home | Movies library |
 |---|---|
 | <img src="assets/screenshots/home-desktop.webp" alt="Home" width="420"> | <img src="assets/screenshots/movies-desktop.webp" alt="Movies library" width="420"> |
 | **Movie page** | **Home on mobile** |
 | <img src="assets/screenshots/movie-desktop.webp" alt="Movie page" width="420"> | <img src="assets/screenshots/home-mobile.webp" alt="Home on mobile" width="200"> |
+
+</details>
+
+<details open>
+<summary><b>With the comics add-on</b></summary>
+
+| Home | Movies library |
+|---|---|
+| <img src="assets/screenshots/comics-home-desktop.webp" alt="Home" width="420"> | <img src="assets/screenshots/comics-movies-desktop.webp" alt="Movies library" width="420"> |
+| **Movie page** | **Home on mobile** |
+| <img src="assets/screenshots/comics-movie-desktop.webp" alt="Movie page" width="420"> | <img src="assets/screenshots/comics-home-mobile.webp" alt="Home on mobile" width="200"> |
+
+</details>
 
 ## Notes
 
@@ -156,8 +192,16 @@ ElegantSpider/
 │   └── workflows/
 │       └── elegantfin-watch.yml
 ├── assets/
+│   ├── fonts/
+│   │   ├── bangers.woff2
+│   │   ├── outfit.woff2
+│   │   └── README.md
 │   ├── logo.png
 │   └── screenshots/
+│       ├── comics-home-desktop.webp
+│       ├── comics-home-mobile.webp
+│       ├── comics-movie-desktop.webp
+│       ├── comics-movies-desktop.webp
 │       ├── home-desktop.webp
 │       ├── home-mobile.webp
 │       ├── movie-desktop.webp
@@ -165,8 +209,8 @@ ElegantSpider/
 ├── scripts/
 │   └── check-elegantfin.sh
 ├── Theme/
-│   ├── ElegantSpider-latest.css
-│   └── ElegantSpider-v1.0.0.css
+│   ├── ElegantSpider-comics.css
+│   └── ElegantSpider-latest.css
 ├── elegantspider.yaml
 ├── LICENSE
 └── README.md
@@ -177,6 +221,11 @@ ElegantSpider/
 If you enjoy **ElegantSpider**, consider starring the repository on GitHub, and give some love to **[ElegantFin](https://github.com/lscambo13/ElegantFin)** as well, since all the design work is theirs.
 
 ## Changelog
+
+### Version 1.1.0 — 2026
+
+- Bigger web watermark, now with a second one in the bottom-left corner
+- Optional comics add-on (`ElegantSpider-comics.css`): Bangers and Outfit fonts, comic buttons, red-bordered cards with hard blue shadow, red-to-blue progress bars
 
 ### Version 1.0.0 — 2026
 
@@ -195,6 +244,7 @@ If you enjoy **ElegantSpider**, consider starring the repository on GitHub, and 
 
 - **[ElegantFin](https://github.com/lscambo13/ElegantFin)** by [lscambo13](https://github.com/lscambo13): the base theme
 - **[ElegantFin for Jellyfin 12](https://github.com/mihaif7/elegantfin-jf12)** by [mihaif7](https://github.com/mihaif7): Modern layout support
+- **Bangers** by Vernon Adams and **Outfit** by the Outfit Project Authors: fonts of the comics add-on, SIL OFL 1.1
 
 ## Author
 
@@ -273,7 +323,7 @@ Coller le même code dans **Paramètres → Affichage → CSS personnalisé**.
 Pour bloquer une version qui ne changera jamais, remplacer la dernière ligne par :
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/StarKev/ElegantSpider@v1.0.0/Theme/ElegantSpider-v1.0.0.css");
+@import url("https://cdn.jsdelivr.net/gh/StarKev/ElegantSpider@v1.0.0/Theme/ElegantSpider-latest.css");
 ```
 
 ### Option 4 — Sans import par URL
@@ -306,15 +356,51 @@ Redéfinir ces variables après les imports :
 
 Toutes les options d'ElegantFin (styles de barre d'en-tête, boutons des cartes, taille des cartes de reprise…) restent utilisables.
 
+## Extension BD (optionnelle)
+
+Un second fichier donne à Jellyfin un look de comics : titres et boutons en **Bangers**, police **Outfit** pour le texte, cartes à bordure rouge avec ombre bleue dure, barres de progression rouge vers bleu sur la ligne « Continuer à regarder », bouton Lecture rouge et boutons secondaires bleus.
+
+Ajouter cette ligne **après** `ElegantSpider-latest.css` :
+
+```css
+@import url("https://cdn.jsdelivr.net/gh/StarKev/ElegantSpider@main/Theme/ElegantSpider-comics.css");
+```
+
+Les polices sont servies depuis `assets/fonts/` par chemins relatifs, rien d'autre à installer. Les deux sont sous licence SIL OFL 1.1 et gèrent les accents français.
+
+| Variable | Valeur par défaut | Rôle |
+|----------|-------------------|------|
+| `--es-comic` | `"Bangers", "Impact", sans-serif` | Police des titres et boutons |
+| `--es-hard-shadow` | `3px 3px 0 var(--es-blue)` | Ombre dure des boutons |
+| `--es-hard-shadow-big` | `6px 6px 0 var(--es-blue)` | Ombre dure au survol |
+
 ## Aperçu
 
+### 🖼️ Aperçu du thème
+
 Captures faites sur un vrai serveur Jellyfin 12.4 (affichage Moderne) avec ElegantFin, le compagnon jf12 et ElegantSpider.
+
+<details>
+<summary><b>Thème de base</b></summary>
 
 | Accueil | Bibliothèque Films |
 |---|---|
 | <img src="assets/screenshots/home-desktop.webp" alt="Accueil" width="420"> | <img src="assets/screenshots/movies-desktop.webp" alt="Bibliothèque Films" width="420"> |
 | **Fiche d'un film** | **Accueil sur mobile** |
 | <img src="assets/screenshots/movie-desktop.webp" alt="Fiche d'un film" width="420"> | <img src="assets/screenshots/home-mobile.webp" alt="Accueil sur mobile" width="200"> |
+
+</details>
+
+<details open>
+<summary><b>Avec l'extension BD</b></summary>
+
+| Accueil | Bibliothèque Films |
+|---|---|
+| <img src="assets/screenshots/comics-home-desktop.webp" alt="Accueil" width="420"> | <img src="assets/screenshots/comics-movies-desktop.webp" alt="Bibliothèque Films" width="420"> |
+| **Fiche d'un film** | **Accueil sur mobile** |
+| <img src="assets/screenshots/comics-movie-desktop.webp" alt="Fiche d'un film" width="420"> | <img src="assets/screenshots/comics-home-mobile.webp" alt="Accueil sur mobile" width="200"> |
+
+</details>
 
 ## Notes
 
@@ -345,8 +431,16 @@ ElegantSpider/
 │   └── workflows/
 │       └── elegantfin-watch.yml
 ├── assets/
+│   ├── fonts/
+│   │   ├── bangers.woff2
+│   │   ├── outfit.woff2
+│   │   └── README.md
 │   ├── logo.png
 │   └── screenshots/
+│       ├── comics-home-desktop.webp
+│       ├── comics-home-mobile.webp
+│       ├── comics-movie-desktop.webp
+│       ├── comics-movies-desktop.webp
 │       ├── home-desktop.webp
 │       ├── home-mobile.webp
 │       ├── movie-desktop.webp
@@ -354,8 +448,8 @@ ElegantSpider/
 ├── scripts/
 │   └── check-elegantfin.sh
 ├── Theme/
-│   ├── ElegantSpider-latest.css
-│   └── ElegantSpider-v1.0.0.css
+│   ├── ElegantSpider-comics.css
+│   └── ElegantSpider-latest.css
 ├── elegantspider.yaml
 ├── LICENSE
 └── README.md
@@ -366,6 +460,11 @@ ElegantSpider/
 Si vous appréciez **ElegantSpider**, pensez à mettre une étoile au dépôt GitHub, et à soutenir aussi **[ElegantFin](https://github.com/lscambo13/ElegantFin)**, puisque tout le travail de design vient de lui.
 
 ## Changelog
+
+### Version 1.1.0 — 2026
+
+- Toile en filigrane agrandie, avec une seconde en bas à gauche
+- Extension BD optionnelle (`ElegantSpider-comics.css`) : polices Bangers et Outfit, boutons BD, cartes à bordure rouge et ombre bleue dure, barres de progression rouge vers bleu
 
 ### Version 1.0.0 — 2026
 
@@ -384,6 +483,7 @@ Si vous appréciez **ElegantSpider**, pensez à mettre une étoile au dépôt Gi
 
 - **[ElegantFin](https://github.com/lscambo13/ElegantFin)** par [lscambo13](https://github.com/lscambo13) : le thème de base
 - **[ElegantFin for Jellyfin 12](https://github.com/mihaif7/elegantfin-jf12)** par [mihaif7](https://github.com/mihaif7) : la prise en charge de la disposition Moderne
+- **Bangers** de Vernon Adams et **Outfit** des auteurs du projet Outfit : polices de l'extension BD, SIL OFL 1.1
 
 ## Auteur
 

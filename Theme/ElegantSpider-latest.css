@@ -28,10 +28,11 @@
     --headerColorGradient: linear-gradient(180deg, rgba(10, 15, 34, 0.95) 30%, 55%, transparent 90%);
     --headerColorGradientAlt: linear-gradient(180deg, rgba(10, 15, 34, 1), 70%, transparent);
 
-    /* --------------------- Toile en filigrane et dégradé rouge/bleu --------------------- */
+    /* --------------------- Toiles en filigrane (haut droite, bas gauche) et dégradé rouge/bleu --------------------- */
     --es-web: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cpath d='M300 300L300 0M300 300L450 40M300 300L560 150M300 300L600 300M300 300L560 450M300 300L450 560M300 300L300 600M300 300L150 560M300 300L40 450M300 300L0 300M300 300L40 150M300 300L150 40M300 260Q309 267 320 265Q324 276 335 280Q333 291 340 300Q333 309 335 320Q324 324 320 335Q309 333 300 340Q291 333 280 335Q276 324 265 320Q267 309 260 300Q267 291 265 280Q276 276 280 265Q291 267 300 260M300 220Q318 234 340 231Q349 251 369 260Q366 282 380 300Q366 318 369 340Q349 349 340 369Q318 366 300 380Q282 366 260 369Q251 349 231 340Q234 318 220 300Q234 282 231 260Q251 251 260 231Q282 234 300 220M300 175Q328 196 362 192Q376 224 408 238Q404 272 425 300Q404 328 408 362Q376 376 362 408Q328 404 300 425Q272 404 238 408Q224 376 192 363Q196 328 175 300Q196 272 192 238Q224 224 237 192Q272 196 300 175M300 125Q339 155 388 148Q406 194 452 212Q445 261 475 300Q445 339 452 388Q406 406 388 452Q339 445 300 475Q261 445 213 452Q194 406 148 388Q155 339 125 300Q155 261 148 212Q194 194 212 148Q261 155 300 125M300 70Q351 109 415 101Q440 160 499 185Q491 249 530 300Q491 351 499 415Q440 440 415 499Q351 491 300 530Q249 491 185 499Q160 440 101 415Q109 351 70 300Q109 249 101 185Q160 160 185 101Q249 109 300 70M300 10Q365 59 445 49Q476 124 551 155Q541 235 590 300Q541 365 551 445Q476 476 445 551Q365 541 300 590Q235 541 155 551Q124 476 49 445Q59 365 10 300Q59 235 49 155Q124 124 155 49Q235 59 300 10' fill='none' stroke='white' stroke-opacity='.07' stroke-width='1.2'/%3E%3C/svg%3E");
     --backgroundGradient:
-        var(--es-web) right -14rem top -14rem / 44rem no-repeat,
+        var(--es-web) right -18rem top -18rem / 60rem no-repeat,
+        var(--es-web) left -18rem bottom -18rem / 60rem no-repeat,
         radial-gradient(ellipse at 100% 0%, rgb(var(--es-red-rgb) / 0.22), transparent 55%),
         radial-gradient(ellipse at 0% 100%, hsla(224, 76%, 45%, 0.22), transparent 60%),
         linear-gradient(0deg, var(--darkerGradientPoint) 35%, var(--lighterGradientPoint));

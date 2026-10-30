@@ -1,0 +1,261 @@
+/* ======================== ELEGANTSPIDER COMICS ======================== */
+/* Module optionnel : police Outfit, titres et boutons façon BD, ombres décalées */
+/* À importer APRÈS ElegantSpider-latest.css */
+/* ================================================= */
+
+
+/* ======================== POLICES ======================== */
+/* --------------------- Bangers (titres et boutons) --------------------- */
+@font-face {
+    font-family: "Bangers";
+    src: url("../assets/fonts/bangers.woff2") format("woff2");
+    font-display: swap;
+}
+
+/* --------------------- Outfit (texte courant) --------------------- */
+@font-face {
+    font-family: "Outfit";
+    src: url("../assets/fonts/outfit.woff2") format("woff2");
+    font-weight: 100 900;
+    font-display: swap;
+}
+/* ================================================= */
+
+
+/* ======================== VARIABLES ======================== */
+:root {
+    font-family: "Outfit", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --es-blue-rgb: 29 79 215; /* même bleu que --es-blue, en canaux R G B */
+    --es-comic: "Bangers", "Impact", "Arial Black", sans-serif;
+    --es-hard-shadow: 3px 3px 0 var(--es-blue);
+    --es-hard-shadow-big: 6px 6px 0 var(--es-blue);
+}
+
+body,
+button,
+input,
+select,
+textarea,
+.MuiTypography-root,
+.MuiButton-root {
+    font-family: inherit;
+}
+/* ================================================= */
+
+
+/* ======================== TITRES ======================== */
+/* --------------------- Titres de sections (Continuer, Ajoutés récemment...) --------------------- */
+.sectionTitle {
+    font-family: var(--es-comic);
+    font-weight: 400;
+    font-size: 1.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 2px 2px 0 var(--es-red);
+}
+
+/* --------------------- Titre d'un film ou d'une série (quand il n'y a pas de logo) --------------------- */
+.itemName {
+    font-family: var(--es-comic);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 var(--es-blue);
+}
+/* ================================================= */
+
+
+/* ======================== BOUTONS ======================== */
+/* --------------------- Lecture et valider : rouge, contour blanc, ombre bleue --------------------- */
+.btnPlay.detailButton,
+.button-submit {
+    background-color: var(--es-red);
+    border: 2px solid #fff;
+    box-shadow: var(--es-hard-shadow);
+    color: #fff;
+}
+
+/* --------------------- Boutons secondaires (Programmes, Guide...) : bleu translucide --------------------- */
+.raised.emby-button:not(.button-submit) {
+    background-color: rgb(var(--es-blue-rgb) / 0.35);
+    border: 1.5px solid rgb(255 255 255 / 0.25);
+    color: #fff;
+}
+
+/* --------------------- Police et relief communs --------------------- */
+.btnPlay.detailButton,
+.button-submit,
+.raised.emby-button {
+    font-family: var(--es-comic);
+    font-weight: 400;
+    font-size: 1.15rem;
+    letter-spacing: 0.06em;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btnPlay.detailButton:hover,
+.button-submit:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--es-hard-shadow-big);
+}
+
+.raised.emby-button:not(.button-submit):hover {
+    background-color: var(--es-blue);
+}
+
+.btnPlay.detailButton:active,
+.button-submit:active {
+    transform: scale(0.96);
+    box-shadow: var(--es-hard-shadow);
+}
+
+.btnPlay > .detailButton-content,
+.btnPlay .detailButton-icon-text {
+    font-family: var(--es-comic);
+}
+
+/* --------------------- Barre du haut : Lire tout, onglets --------------------- */
+.MuiAppBar-root .MuiButton-root {
+    font-family: var(--es-comic);
+    font-weight: 400;
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+}
+
+.MuiAppBar-root .MuiButton-contained:not(.MuiButtonGroup-grouped) {
+    border: 2px solid #fff !important;
+    box-shadow: var(--es-hard-shadow);
+}
+
+/* --------------------- Onglets (Favoris, Films, Séries...) : texte nu, onglet actif rouge avec ombre bleue --------------------- */
+.MuiAppBar-root a.MuiButton-colorInherit {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #c9d4f5;
+}
+
+.MuiAppBar-root a.MuiButton-colorInherit {
+    border: 2px solid transparent;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+
+.MuiAppBar-root a.MuiButton-colorInherit:hover,
+.MuiAppBar-root a.MuiButton-colorInherit:focus-visible {
+    border-color: #fff;
+    box-shadow: var(--es-hard-shadow) !important;
+    transform: translate(-1px, -1px);
+    color: #fff;
+}
+
+.MuiAppBar-root a.MuiButton-colorPrimary {
+    background: var(--es-red);
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: var(--es-hard-shadow);
+}
+
+/* --------------------- Plugin Media Bar : Lecture rouge cerclé de blanc avec ombre bleue, Infos et Favori en bleu --------------------- */
+.button-container .play-button {
+    border: 2px solid #fff !important;
+    box-shadow: var(--es-hard-shadow) !important;
+    font-family: var(--es-comic);
+    font-weight: 400;
+    font-size: 1.15em;
+    letter-spacing: 0.06em;
+}
+
+.button-container .detail-button,
+.button-container .favorite-button {
+    background: rgb(var(--es-blue-rgb) / 0.35) !important;
+    border: 2px solid rgb(255 255 255 / 0.25) !important;
+    color: #fff;
+}
+
+.button-container .detail-button:hover,
+.button-container .favorite-button:hover {
+    background: var(--es-blue) !important;
+}
+
+/* --------------------- Boutons ronds secondaires (revoir, favori...) --------------------- */
+.detailButton:not(.btnPlay) {
+    background: rgb(var(--es-blue-rgb) / 0.35);
+    border: 2px solid rgb(255 255 255 / 0.25);
+}
+/* ================================================= */
+
+
+/* ======================== CARTES ET CONTINUER ======================== */
+/* --------------------- Cartes : bord rouge, ombre bleue décalée (ElegantFin impose ses bordures en !important) --------------------- */
+.card .cardBox:not(.visualCardBox) .cardScalable {
+    border: 2px solid transparent !important;
+    box-shadow: 4px 4px 0 rgb(var(--es-blue-rgb) / 0.75);
+    transition: transform 125ms, translate 0.2s, box-shadow 0.2s;
+}
+
+@media (hover: hover) {
+    .card:hover .cardBox:not(.visualCardBox) .cardScalable,
+    .card:focus .cardBox:not(.visualCardBox) .cardScalable {
+        border-color: transparent !important;
+        translate: -2px -2px;
+        box-shadow: 7px 7px 0 var(--es-blue);
+        transform: none;
+    }
+}
+
+/* --------------------- Pas d'agrandissement d'ElegantFin au survol : la carte glisse en diagonale sans déformer l'ombre --------------------- */
+.card-hoverable:hover .cardBox:not(.visualCardBox) .cardScalable {
+    transform: none;
+}
+
+/* --------------------- Affiches (films, séries, albums) : sans cadre au repos, ombre bleue seulement au survol --------------------- */
+.portraitCard .cardBox:not(.visualCardBox) .cardScalable,
+.overflowPortraitCard .cardBox:not(.visualCardBox) .cardScalable,
+.squareCard .cardBox:not(.visualCardBox) .cardScalable,
+.overflowSquareCard .cardBox:not(.visualCardBox) .cardScalable {
+    border-color: transparent !important;
+    box-shadow: none;
+}
+
+@media (hover: hover) {
+    .portraitCard:hover .cardBox:not(.visualCardBox) .cardScalable,
+    .portraitCard:focus .cardBox:not(.visualCardBox) .cardScalable,
+    .overflowPortraitCard:hover .cardBox:not(.visualCardBox) .cardScalable,
+    .overflowPortraitCard:focus .cardBox:not(.visualCardBox) .cardScalable,
+    .squareCard:hover .cardBox:not(.visualCardBox) .cardScalable,
+    .overflowSquareCard:hover .cardBox:not(.visualCardBox) .cardScalable {
+        border-color: transparent !important;
+        box-shadow: 6px 6px 0 var(--es-blue);
+    }
+}
+
+/* --------------------- Titres sous les affiches en Bangers --------------------- */
+.portraitCard .cardText-first,
+.overflowPortraitCard .cardText-first,
+.portraitCard .cardText-first a,
+.overflowPortraitCard .cardText-first a {
+    font-family: var(--es-comic);
+    font-weight: 400;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* --------------------- Barre de progression : dégradé rouge vers bleu --------------------- */
+.itemProgressBarForeground {
+    background: linear-gradient(90deg, var(--es-red), var(--es-blue));
+}
+
+/* --------------------- Mini bouton lecture : dégradé rouge vers bleu, rouge vif quand on le survole --------------------- */
+.cardOverlayFab-primary {
+    background: linear-gradient(135deg, var(--es-red), var(--es-blue));
+    border: 0 !important;
+    box-shadow: none;
+    transition: transform 0.15s, background 0.15s;
+}
+
+.cardOverlayFab-primary:hover {
+    background: var(--es-red-hover);
+    transform: scale(1.08);
+}
+/* ================================================= */
